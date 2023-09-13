@@ -26,10 +26,10 @@
           Dropdown
         </a>
         <ul class="dropdown-menu ">
-        <li><%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class:"dropdown-item" %></li>
+        <li><%= button_to "Log out", destroy_player_session_path, method: :delete, data: { turbo: "false" }, class:"dropdown-item" %></li>
       <% else %>
-          <li><%= link_to "Log in", new_user_session_path, class:" nav-link btn btn-info btn-sm" %></li>          
-          <li><%= link_to "Register", new_user_registration_path, class:" nav-link btn btn-primary btn-sm" %></li>
+          <li><%= link_to "Log in", new_player_session_path, class:" nav-link btn btn-info btn-sm" %></li>          
+          <li><%= link_to "Register", new_player_registration_path, class:" nav-link btn btn-primary btn-sm" %></li>
         </ul>
       <% end %>
       </ul>
