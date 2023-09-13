@@ -12,9 +12,4 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-
-  <%= form_tag(season_register_team_path(@season), method: :post) do %>
-    <%= hidden_field_tag :team_id, @team.id %>
-    <%= submit_tag 'Register Team for Season' %>
-  <% end %>
 <% end %>

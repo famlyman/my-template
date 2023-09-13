@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_13_161036) do
-  create_table "leagues", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "matches", force: :cascade do |t|
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_155239) do
   create_table "players", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -37,30 +25,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_161036) do
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.integer "season_id", null: false
-    t.integer "team_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["season_id"], name: "index_registrations_on_season_id"
-    t.index ["team_id"], name: "index_registrations_on_team_id"
-  end
-
-  create_table "seasons", force: :cascade do |t|
-    t.string "name"
-    t.date "start_date"
-    t.date "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.string "facility"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "registrations", "seasons"
-  add_foreign_key "registrations", "teams"
 end
