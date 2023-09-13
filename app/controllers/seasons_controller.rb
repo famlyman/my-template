@@ -57,6 +57,16 @@ class SeasonsController < ApplicationController
     end
   end
 
+  def register_team
+    season = Season.find(params[:id])
+    team = Team.find(params[:team_id])
+
+    # Create a registration record to associate the team with the season
+    Registration.create(season: season, team: team)
+
+    redirect_to season_path(season), notice: 'Team successfully registered for the season.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_season
