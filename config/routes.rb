@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+  devise_for :players, controllers: {
+    sessions: 'players/sessions',
+    registrations: 'players/registrations'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'pages#home'
+  
 end
