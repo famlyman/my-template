@@ -26,9 +26,10 @@
       <li class="nav-item dropdown">
       <% if signed_in? %>
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown
+          <%= current_player.name %>
         </a>
-        <ul class="dropdown-menu ">
+        <ul class="dropdown-menu dropdown-menu-md-end">
+        <li><%= link_to 'Edit Account', edit_player_registration_path, class:"dropdown-item" %></li>
         <li><%= button_to "Log out", destroy_player_session_path, method: :delete, data: { turbo: "false" }, class:"dropdown-item" %></li>
       <% else %>
           <li><%= link_to "Log in", new_player_session_path, class:" nav-link btn btn-info btn-sm" %></li>          

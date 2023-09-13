@@ -18,10 +18,8 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.label :captains_can_create_teams %>
-    <%= f.input :role, 
-                as: :boolean, 
-                label: "Register as Captain" %>
+    <%= f.label :role, "Register as Captain if you plan to create a team" %><br>
+    <%= f.radio_button :role, :captain %> Captain<br>
   </div>
 
   <div class="form-actions">

@@ -10,5 +10,6 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New team", new_team_path %>
+<% if current_player&.admin? || current_player&.captain? %>
+  <%= link_to "New team", new_team_path %>
+<% end %>
