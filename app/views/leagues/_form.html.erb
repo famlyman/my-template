@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%= f.collection_select(:season_ids, Season.all, :id, :name, {}, {multiple: true}) %>
   </div>
 
   <div class="form-actions">

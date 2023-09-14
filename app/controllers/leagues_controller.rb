@@ -8,6 +8,8 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/1 or /leagues/1.json
   def show
+    @league = League.find(params[:id])
+    @seasons = @league.seasons
   end
 
   # GET /leagues/new
@@ -65,6 +67,6 @@ class LeaguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def league_params
-      params.require(:league).permit(:name, :season_id)
+      params.require(:league).permit(:name, season_ids: [] )
     end
 end

@@ -7,8 +7,12 @@
     <li><%= team.name %></li>
   <% end %>
 </ul>
-
-
+<p>Leagues:</p>
+<ul>
+<% @league.season_ids.each do |season_id| %>
+  <li><%= Season.find(season_id).name %></li>
+<% end %>
+</ul>
 <div>
   <%= link_to "Edit this league", edit_league_path(@league) %> |
   <%= link_to "Back to leagues", leagues_path %>
