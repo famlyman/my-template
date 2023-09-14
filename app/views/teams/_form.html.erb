@@ -6,6 +6,8 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :facility %>
+    <%= f.collection_select :season, Season.all, :id, :name, prompt: "Select a Season" %>
+    <%= f.collection_select :league, League.all, :id, :name, prompt: "Select a League" %>
   </div>
 
   <div class="form-actions">

@@ -1,6 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @league %>
+<p>Teams:</p>
+<ul>
+  <% @league.teams.each do |team| %>
+    <li><%= team.name %></li>
+  <% end %>
+</ul>
+
 
 <div>
   <%= link_to "Edit this league", edit_league_path(@league) %> |

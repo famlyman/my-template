@@ -12,11 +12,13 @@
       <li><%= player.name %></li>
     <% end %>
   </ul>
+  <p>League: <%= @team.league.name %></p>
+  <p>Season: <%= @team.season.name %></p>
 
 <div>
-  <%= link_to "Back to teams", teams_path %>
+  <%= link_to "Back to teams", teams_path, class:"btn btn-sm btn-success" %>
 <% if current_player&.admin? %>
-  <%= link_to "Edit this team", edit_team_path(@team) %> |
-  <%= button_to "Destroy this team", @team, method: :delete %>
+  <%= link_to "Edit this team", edit_team_path(@team), class:"btn btn-sm btn-info" %> 
+  <%= button_to "Destroy this team", @team, method: :delete, class:"btn btn-sm btn-danger" %>
 <% end %>
 </div>

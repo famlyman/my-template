@@ -8,6 +8,9 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/1 or /seasons/1.json
   def show
+    @season = Season.find(params[:id])
+    @teams = @season.teams
+    @leagues = @season.leagues
   end
 
   # GET /seasons/new
@@ -17,6 +20,8 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/1/edit
   def edit
+    @season = Season.find(params[:id])
+    @leagues = League.all
   end
 
   # POST /seasons or /seasons.json
@@ -36,6 +41,8 @@ class SeasonsController < ApplicationController
 
   # PATCH/PUT /seasons/1 or /seasons/1.json
   def update
+    @season = Season.find(params[:id])
+    
     respond_to do |format|
       if @season.update(season_params)
         format.html { redirect_to season_url(@season), notice: "Season was successfully updated." }
@@ -65,6 +72,6 @@ class SeasonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def season_params
-      params.require(:season).permit(:name, :start_date, :end_date)
+      params.require(:season).permit(:name, :start_date, :end_date, league_ids: [] )
     end
 end
