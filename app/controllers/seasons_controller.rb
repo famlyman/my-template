@@ -11,6 +11,10 @@ class SeasonsController < ApplicationController
     @season = Season.find(params[:id])
     @teams = @season.teams
     @leagues = @season.leagues
+
+    current_date = Date.today
+    @current_season = Season.where("start_date <= ? AND end_date >= ?", current_date, current_date).first
+    
   end
 
   # GET /seasons/new

@@ -10,11 +10,15 @@ class LeaguesController < ApplicationController
   def show
     @league = League.find(params[:id])
     @seasons = @league.seasons
+
+    
   end
 
   # GET /leagues/new
   def new
     @league = League.new
+    @seasons = Season.all
+    @current_season = determine_current_season
   end
 
   # GET /leagues/1/edit
@@ -57,12 +61,20 @@ class LeaguesController < ApplicationController
       format.html { redirect_to leagues_url, notice: "League was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
+  end  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_league
       @league = League.find(params[:id])
+    end
+
+    def determine_current_season
+      @seasons.each do |season|
+        return season if Date.today.between?(season.start_date, season.end_date)
+      end
+      nil
     end
 
     # Only allow a list of trusted parameters through.
