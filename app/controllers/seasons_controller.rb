@@ -1,10 +1,6 @@
 class SeasonsController < ApplicationController
 <<<<<<< HEAD
-<<<<<<< HEAD
   before_action :set_season, only: %i[ show edit update destroy generate_schedule generate_matches]
-=======
-  before_action :set_season, only: %i[ show edit update destroy ]
->>>>>>> parent of c8636d4 (schedule stuff)
 =======
   before_action :set_season, only: %i[ show edit update destroy ]
 >>>>>>> parent of c8636d4 (schedule stuff)
@@ -23,12 +19,9 @@ class SeasonsController < ApplicationController
     @current_season = Season.where("start_date <= ? AND end_date >= ?", current_date, current_date).first
     
 <<<<<<< HEAD
-<<<<<<< HEAD
     
     @schedules = @season.schedules.order(:date)
     @matches = @season.matches.order(:date)
-=======
->>>>>>> parent of c8636d4 (schedule stuff)
 =======
 >>>>>>> parent of c8636d4 (schedule stuff)
   end
@@ -85,7 +78,6 @@ class SeasonsController < ApplicationController
   end
 
 <<<<<<< HEAD
-<<<<<<< HEAD
   def generate_schedule
     @season = Season.find(params[:id])
     @season.generate_schedule # Assuming you have a generate_schedule method in your Season model
@@ -100,8 +92,6 @@ class SeasonsController < ApplicationController
   
   
 
-=======
->>>>>>> parent of c8636d4 (schedule stuff)
 =======
 >>>>>>> parent of c8636d4 (schedule stuff)
   private
