@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  before_action :set_season, only: %i[ show edit update destroy generate_schedule ]
+  before_action :set_season, only: %i[ show edit update destroy generate_schedule generate_matches]
 
   # GET /seasons or /seasons.json
   def index
@@ -11,11 +11,11 @@ class SeasonsController < ApplicationController
     @season = Season.find(params[:id])
     @teams = @season.teams
     @leagues = @season.leagues
-
     current_date = Date.today
     @current_season = Season.where("start_date <= ? AND end_date >= ?", current_date, current_date).first
     
-
+    
+    @schedules = @season.schedules.order(:date)
     @matches = @season.matches.order(:date)
   end
 
@@ -70,11 +70,18 @@ class SeasonsController < ApplicationController
     end
   end
 
+  def generate_schedule
+    @season = Season.find(params[:id])
+    @season.generate_schedule # Assuming you have a generate_schedule method in your Season model
+    redirect_to @season, notice: "Schedule generated successfully"
+  end
+
   def generate_matches
     @season = Season.find(params[:id])
-    @season.schedule.generate_matches # Assuming you have a generate_matches method in your Schedule model
+    @season.generate_matches
     redirect_to @season, notice: "Matches generated successfully"
   end
+  
   
 
   private

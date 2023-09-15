@@ -1,4 +1,4 @@
-<h2>Matches</h2>
+<h2>Schedules</h2>
 <table>
   <thead>
     <tr>
@@ -8,12 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @matches.each do |match| %>
+    <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= match.date %></td>
-        <td><%= match.home_team.name %></td>
-        <td><%= match.away_team.name %></td>
+        <td><%= schedule.date %></td>
+        <td><%= schedule.home_team.name %></td>
+        <td><%= schedule.away_team.name %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "Generate Matches", generate_matches_season_path(@season), method: :post, class: "btn btn-primary" %>
