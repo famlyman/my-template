@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 <<<<<<< HEAD
-<<<<<<< HEAD
   resources :seasons do
     member do
       post 'generate_schedule'
@@ -8,9 +7,6 @@ Rails.application.routes.draw do
     end
     resources :matches
   end
-=======
-  resources :seasons
->>>>>>> parent of c8636d4 (schedule stuff)
 =======
   resources :seasons
 >>>>>>> parent of c8636d4 (schedule stuff)
