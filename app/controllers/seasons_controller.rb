@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  before_action :set_season, only: %i[ show edit update destroy generate_schedule ]
+  before_action :set_season, only: %i[ show edit update destroy ]
 
   # GET /seasons or /seasons.json
   def index
@@ -15,8 +15,6 @@ class SeasonsController < ApplicationController
     current_date = Date.today
     @current_season = Season.where("start_date <= ? AND end_date >= ?", current_date, current_date).first
     
-
-    @matches = @season.matches.order(:date)
   end
 
   # GET /seasons/new
@@ -69,13 +67,6 @@ class SeasonsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def generate_matches
-    @season = Season.find(params[:id])
-    @season.schedule.generate_matches # Assuming you have a generate_matches method in your Schedule model
-    redirect_to @season, notice: "Matches generated successfully"
-  end
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.
