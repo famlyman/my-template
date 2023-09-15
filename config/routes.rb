@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :seasons
+  resources :seasons do
+    member do
+      post 'generate_schedule'
+    end
+    resources :matches
+  end
   resources :teams do
     post 'join', on: :member
     delete 'leave', on: :member

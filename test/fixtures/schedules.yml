@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2023-09-14 20:01:40
+  time: 2023-09-14 20:01:40
+  home_team: one
+  away_team: one
+
+two:
+  date: 2023-09-14 20:01:40
+  time: 2023-09-14 20:01:40
+  home_team: two
+  away_team: two
