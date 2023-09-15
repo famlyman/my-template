@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :seasons do
     member do
       post 'generate_schedule'
-      post 'generate_matches'
     end
     resources :matches
   end
