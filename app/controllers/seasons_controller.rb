@@ -1,9 +1,5 @@
 class SeasonsController < ApplicationController
-<<<<<<< HEAD
   before_action :set_season, only: %i[ show edit update destroy generate_schedule generate_matches]
-=======
-  before_action :set_season, only: %i[ show edit update destroy ]
->>>>>>> parent of c8636d4 (schedule stuff)
 
   # GET /seasons or /seasons.json
   def index
@@ -18,12 +14,9 @@ class SeasonsController < ApplicationController
     current_date = Date.today
     @current_season = Season.where("start_date <= ? AND end_date >= ?", current_date, current_date).first
     
-<<<<<<< HEAD
     
     @schedules = @season.schedules.order(:date)
     @matches = @season.matches.order(:date)
-=======
->>>>>>> parent of c8636d4 (schedule stuff)
   end
 
   # GET /seasons/new
@@ -77,7 +70,6 @@ class SeasonsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def generate_schedule
     @season = Season.find(params[:id])
     @season.generate_schedule # Assuming you have a generate_schedule method in your Season model
@@ -92,8 +84,6 @@ class SeasonsController < ApplicationController
   
   
 
-=======
->>>>>>> parent of c8636d4 (schedule stuff)
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_season

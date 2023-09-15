@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_005328) do
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
     t.index ["season_id", "league_id"], name: "index_leagues_seasons_on_season_id_and_league_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.datetime "date"
+    t.integer "home_team_id", null: false
+    t.integer "away_team_id", null: false
+    t.integer "schedule_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["schedule_id"], name: "index_matches_on_schedule_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,6 +70,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
     t.integer "team_id", null: false
     t.index ["player_id", "team_id"], name: "index_players_teams_on_player_id_and_team_id"
     t.index ["team_id", "player_id"], name: "index_players_teams_on_team_id_and_player_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.datetime "date"
+    t.time "time"
+    t.integer "home_team_id", null: false
+    t.integer "away_team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_schedules_on_away_team_id"
+    t.index ["home_team_id"], name: "index_schedules_on_home_team_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -83,6 +106,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
     t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
+  add_foreign_key "matches", "away_teams"
+  add_foreign_key "matches", "home_teams"
+  add_foreign_key "matches", "schedules"
+  add_foreign_key "schedules", "away_teams"
+  add_foreign_key "schedules", "home_teams"
   add_foreign_key "teams", "leagues"
   add_foreign_key "teams", "seasons"
 end
