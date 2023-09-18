@@ -20,6 +20,6 @@
 
   <%= button_to "Destroy this season", @season, method: :delete %>
 </div>
-<% if current_user.admin? %> <!-- Assuming admin can generate schedule -->
+<% if current_player.admin? %> <!-- Assuming admin can generate schedule -->
   <%= button_to "Generate Schedule", generate_schedule_season_path(@season), method: :post, class: "btn btn-primary" %>
 <% end %>
