@@ -1,0 +1,5 @@
+<%= simple_form_for @match, url: confirm_selection_match_path(@match), method: :post do |f| %>
+  <p>Selected Match:</p>
+  <p><%= @match.team_one.name %> vs. <%= @match.team_two.name %></p>
+  <%= f.button :submit, 'Confirm Match Selection' %>
+<% end %>

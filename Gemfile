@@ -78,3 +78,5 @@ gem "devise", "~> 4.9"
 gem "friendly_id", "~> 5.5"
 
 gem "mail_form", "~> 1.10"
+
+gem "ice_cube", "~> 0.16.4"

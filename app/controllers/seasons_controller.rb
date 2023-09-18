@@ -66,7 +66,7 @@ class SeasonsController < ApplicationController
       format.html { redirect_to seasons_url, notice: "Season was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

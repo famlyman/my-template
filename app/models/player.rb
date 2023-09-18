@@ -10,11 +10,17 @@ class Player < ApplicationRecord
   enum role: [:player, :captain, :admin]
   after_initialize :set_default_role, if: :new_record?
 
+
+  def captain_of?(team)
+    team.captain == self
+  end
+
   private
 
   def set_default_role
     self.role ||= :player
   end
   
+
 
 end

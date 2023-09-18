@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_18_162036) do
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -35,6 +35,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
     t.integer "league_id", null: false
     t.index ["league_id", "season_id"], name: "index_leagues_seasons_on_league_id_and_season_id"
     t.index ["season_id", "league_id"], name: "index_leagues_seasons_on_season_id_and_league_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "team_one_id", null: false
+    t.integer "team_two_id", null: false
+    t.integer "season_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.time "time"
+    t.index ["season_id"], name: "index_matches_on_season_id"
+    t.index ["team_one_id"], name: "index_matches_on_team_one_id"
+    t.index ["team_two_id"], name: "index_matches_on_team_two_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -83,6 +96,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_152024) do
     t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
+  add_foreign_key "matches", "seasons"
+  add_foreign_key "matches", "team_ones"
+  add_foreign_key "matches", "team_twos"
   add_foreign_key "teams", "leagues"
   add_foreign_key "teams", "seasons"
 end

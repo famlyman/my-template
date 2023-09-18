@@ -101,6 +101,7 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    ice_cube (0.16.4)
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -245,6 +246,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   friendly_id (~> 5.5)
+  ice_cube (~> 0.16.4)
   importmap-rails
   jbuilder
   mail_form (~> 1.10)
