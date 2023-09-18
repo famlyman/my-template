@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     post 'join', on: :member
     delete 'leave', on: :member
   end
-  resources :seasons 
+  resources :seasons do
+    post 'generate_schedule', on: :member
+  end
   resources :leagues
   resources :matches do
     post 'select', on: :member
